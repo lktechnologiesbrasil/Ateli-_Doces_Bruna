@@ -61,4 +61,4 @@ _..._
 - **Pendências:** ver `Docs/atelier-bruna/07_DISCOVERY_GAPS.md`.
 ### Status do projeto
 
-Fase 00 concluída (2026-09-26). **Fase 01 — Discovery e inventário de assets em andamento**; nenhum código iniciado; implementação bloqueada (RD-03). Detalhes: `Docs/atelier-bruna/00_CONTEXT_MASTER.md` §11.
+Fase 00 concluída (2026-09-26). **Track A (protótipo público)** liberado por RD-04; **Track B (validação com a Bruna)** bloqueia só o lançamento. Stack proposta (RD-08) aguardando aprovação; nenhum código iniciado. Detalhes: `Docs/atelier-bruna/00_CONTEXT_MASTER.md` §11.

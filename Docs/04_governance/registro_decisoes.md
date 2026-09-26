@@ -60,3 +60,37 @@ _..._
 - **Referências:** `Docs/atelier-bruna/07_DISCOVERY_GAPS.md`, `09_DISCOVERY_INTERVIEW.md`, `10_ASSET_REQUEST.md`, `11_ASSET_INVENTORY.md`, `12_CONTENT_MATRIX.md`.
 - **Consequências:** requisitos funcionais (`Docs/01_product/requisitos_funcionais.md`) só serão escritos após o Discovery.
 - **Status:** Vigente- **Atualização 2026-09-26:** pacote client-facing preparado (`14`, `15`, `16`). Próxima ação externa: entrevista + coleta de materiais. Fase 01 **não** concluída; segue o DoD.
+
+### RD-04 — Mudança de estratégia: Track A (protótipo público) e Track B (validação para produção)
+
+- **Data:** 2026-09-26
+- **Contexto:** não há contato operacional com a Bruna; esperar entrevista e envio de materiais bloqueia o projeto.
+- **Decisão:** a Fase 01 deixa de ser gate para o concept. **Track A** avança com fontes públicas (Instagram, Yooga, Linktree, Google) e fotos públicas selecionadas, com origem registrada. **Track B** (contatos, horários, autorização de assets, dados legais, fatos privados) é obrigatório **antes do lançamento**, não antes do protótipo. Substitui RD-03 no ponto “implementação bloqueada”; RD-03 continua valendo para o **lançamento**.
+- **Regra de evidência:** proibido inventar história, datas, números, depoimentos, prêmios, receitas ou fatos pessoais. Só o que for comprovável em fonte pública, com fonte registrada.
+- **Status:** Vigente
+
+### RD-05 — Instagram (e canais públicos) como fonte primária de branding e fotografia
+
+- **Data:** 2026-09-26
+- **Decisão:** o DNA visual vem do Instagram, do logo público (Yooga), do cardápio (Yooga) e do Linktree/Google. Quando tendência e DNA da marca conflitam, vence o DNA da Bruna. Não desenhar marca nova. Ver `Docs/atelier-bruna/17_INSTAGRAM_BRAND_ATLAS.md` e `18_PUBLIC_CONTENT_INVENTORY.md`.
+- **Restrições:** não remover marca d’água, não falsificar foto, não gerar produtos falsos; imagens públicas só para protótipo/pitch local, **fora do Git**; uso comercial exige autorização (Track B).
+- **Status:** Vigente
+
+### RD-06 — Ferramentas de design do projeto
+
+- **Data:** 2026-09-26
+- **Decisão:** UI/UX Pro Max (`ui-ux-pro-max-cli@2.15.0`, project-local) e Impeccable (build oficial vendored em `.claude/skills/impeccable`, skill v4.4.0, após o instalador falhar com HTTP 404) fazem parte do workflow; **img-to-html não é instalada** (regeneraria fotos com IA, exige stack sem framework, sem licença explícita); só sua metodologia de comparação é aproveitada. Detalhes, comandos e decisões aceitas/rejeitadas: `Docs/atelier-bruna/21_DESIGN_TOOLING_LOG.md`.
+- **Pendências:** aprovar hooks do Impeccable; aprovar o download do binário do engine; instalar Python 3 se quiser rodar os scripts do UI/UX Pro Max.
+- **Status:** Vigente
+
+### RD-07 — Princípios de motion
+
+- **Data:** 2026-09-26
+- **Decisão:** motion serve ao storytelling; só `transform`/`opacity`/`clip-path`; scroll **nativo**, sem scroll-jacking e sem biblioteca de smooth-scroll; pin/scrub em no máximo 3 cenas; conteúdo legível sem animação; `prefers-reduced-motion` obrigatório; mobile sem pin horizontal; sem loader. Ver `Docs/atelier-bruna/20_SCROLL_STORYBOARD.md`.
+- **Status:** Vigente
+
+### RD-08 — Stack (PROPOSTA — aguardando aprovação)
+
+- **Data:** 2026-09-26
+- **Decisão proposta:** Astro (site estático) + CSS moderno + TypeScript + GSAP (core + ScrollTrigger, carregados de forma diferida) + CSS scroll-driven animations onde houver suporte. Justificativa e alternativas: `Docs/02_architecture/stack_tecnica.md`.
+- **Status:** **Proposta** (não vigente até o dono do projeto aprovar; nenhum pacote instalado)

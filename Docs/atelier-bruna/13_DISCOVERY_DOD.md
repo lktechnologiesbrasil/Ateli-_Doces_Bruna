@@ -1,14 +1,18 @@
 # 13 — Definition of Done da Fase 01 (Discovery)
 
+> **Mudança de gate (2026-09-26, RD-04).** A Fase 01 **não bloqueia mais** o protótipo. Dois trilhos:
+> - **Track A — Protótipo público (liberado):** pode avançar com Instagram, Yooga, Linktree, Google e fatos públicos com origem registrada. Gate: brand atlas (`17`), inventário público (`18`), hero (`19`), storyboard (`20`), ferramentas de design (`21`) e aprovação do dono do projeto.
+> - **Track B — Validação para produção (bloqueia o lançamento):** os 13 critérios abaixo e todos os gaps P0 continuam obrigatórios **antes de publicar**. Nenhum deles impede construir e exibir o protótipo.
+
 > Discovery **não termina** porque “já temos bastante coisa”. Termina quando os critérios abaixo estiverem satisfeitos **com evidência registrada**.
 
-## Regra de encerramento
+## Regra de encerramento (Track B — lançamento)
 1. **Todos os gaps P0** de `07_DISCOVERY_GAPS.md` estão `CONFIRMADO` (com data e evidência) — ou explicitamente descartados/adiados pelo dono do projeto, registrado em `Docs/04_governance/registro_decisoes.md`.
 2. Os **critérios mínimos** abaixo estão todos marcados.
 3. O MASTER está atualizado com o que foi confirmado (fatos rotulados; nada inventado).
 4. Todo asset usado tem linha em `11_ASSET_INVENTORY.md` com autorização registrada.
 
-Até lá, **implementação permanece bloqueada** (sem stack, design system, protótipo ou frontend).
+Até lá, o **lançamento** permanece bloqueado. O **protótipo** (Track A) segue liberado, sujeito a aprovação do marco anterior.
 
 ## Critérios mínimos
 | # | Critério | Gaps relacionados | Evidência esperada | Feito |
@@ -37,4 +41,4 @@ Ao confirmar um gap: (1) mudar status em `07` com data e evidência; (2) atualiz
 P1–P3 podem seguir abertos. P1 devem estar resolvidos antes do design final (Fase 04); P2 e P3 podem ser tratados durante o desenvolvimento ou depois.
 
 ## Estado
-**Fase 01 iniciada em 2026-09-26. Critérios cumpridos: 0/13.** Bloqueio real: coleta de informações e assets com a Bruna.
+**Track B: critérios cumpridos 0/13** (há evidência pública parcial; nenhum confirmado pela Bruna). **Track A:** pesquisa e documentação concluídas em 2026-09-26; aguarda aprovação para a implementação.

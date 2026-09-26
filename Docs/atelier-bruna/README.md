@@ -25,6 +25,11 @@ Documentação de **contexto do negócio e da marca** do projeto da landing page
 | [`14_DISCOVERY_FIELD_GUIDE.md`](./14_DISCOVERY_FIELD_GUIDE.md) | Guia de campo: entrevista essencial (25 perguntas). Client-facing (uso do condutor). |
 | [`15_CLIENT_ASSET_CHECKLIST.md`](./15_CLIENT_ASSET_CHECKLIST.md) | Lista de materiais em linguagem simples, para enviar à Bruna. |
 | [`16_DISCOVERY_ONE_PAGER.md`](./16_DISCOVERY_ONE_PAGER.md) | Briefing de uma página para a Bruna. |
+| [`17_INSTAGRAM_BRAND_ATLAS.md`](./17_INSTAGRAM_BRAND_ATLAS.md) | Assinatura visual observada (Instagram e fontes públicas). |
+| [`18_PUBLIC_CONTENT_INVENTORY.md`](./18_PUBLIC_CONTENT_INVENTORY.md) | Inventário de conteúdo público, com URLs e datas. |
+| [`19_HERO_DIRECTION.md`](./19_HERO_DIRECTION.md) | Candidatos e recomendação de Hero. |
+| [`20_SCROLL_STORYBOARD.md`](./20_SCROLL_STORYBOARD.md) | Storyboard da experiência de scroll. |
+| [`21_DESIGN_TOOLING_LOG.md`](./21_DESIGN_TOOLING_LOG.md) | Skills de design: instalação, auditoria e decisões. |
 
 ## Regras
 

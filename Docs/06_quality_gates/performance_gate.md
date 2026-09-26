@@ -69,3 +69,7 @@ _Quem executou esta validação — pessoa humana ou agente de IA, e sob supervi
 _Contexto adicional relevante para quem ler este gate depois: exceções aceitas, ressalvas, links para evidências externas. Se nenhuma, escreva "Nenhuma observação adicional"._
 
 **Observações:** A definir
+
+## Metas do projeto Ateliê Doces Bruna
+
+LCP ≤ 2,5 s, CLS ≤ 0,05, INP ≤ 200 ms (mobile); HTML/CSS/JS críticos ≤ 120 KB gzip; JS de animação ≤ 60 KB gzip (diferido); hero ≤ 150 KB mobile / 250 KB desktop; página inteira ≤ 3 MB. Detalhes: `Docs/02_architecture/stack_tecnica.md`.

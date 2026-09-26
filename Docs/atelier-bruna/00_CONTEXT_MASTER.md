@@ -67,23 +67,20 @@ Instagram, Linktree, Yooga, perfil público do Google/Maps — observados em **s
 
 ## 11. Estado atual
 
-**FASE 00 — concluída** (fundação, DDAE, contexto inicial; commits `c150756` e `aa8f082` em `origin/main`).
+**FASE 00 — concluída** (commits `c150756`, `aa8f082`). **FASE 01 — Discovery: iniciada em 2026-09-26; gate alterado (RD-04):**
 
-**FASE 01 — Discovery e inventário de assets: iniciada em 2026-09-26.** Objetivo: preparar a conversa estruturada com a Bruna e a coleta de materiais reais. Documentos criados:
-- `07_DISCOVERY_GAPS.md` — 71 gaps priorizados (P0–P3) e categorizados; nenhum confirmado.
-- `09_DISCOVERY_INTERVIEW.md` — roteiro de entrevista (79 perguntas).
-- `10_ASSET_REQUEST.md` — pedido de materiais por prioridade.
-- `11_ASSET_INVENTORY.md` — inventário vivo; nenhum asset recebido.
-- `12_CONTENT_MATRIX.md` — conteúdo necessário por seção.
-- `13_DISCOVERY_DOD.md` — critérios de encerramento (0/13 cumpridos).
-- **Pacote client-facing preparado:** `14_DISCOVERY_FIELD_GUIDE.md` (25 perguntas principais; as 79 do `09` viram follow-ups), `15_CLIENT_ASSET_CHECKLIST.md` (lista para enviar à Bruna) e `16_DISCOVERY_ONE_PAGER.md` (briefing de uma página). Nenhuma resposta ou material recebido: tudo `PENDENTE DE DISCOVERY`.
+- **Track A — protótipo público (liberado):** avança com Instagram, Yooga, Linktree, Google e fotos públicas selecionadas, com origem registrada. **Pesquisa concluída em 2026-09-26:** `17_INSTAGRAM_BRAND_ATLAS.md`, `18_PUBLIC_CONTENT_INVENTORY.md`, `19_HERO_DIRECTION.md`, `20_SCROLL_STORYBOARD.md`, `21_DESIGN_TOOLING_LOG.md` e `PRODUCT.md` (raiz). Stack **proposta** (RD-08), aguardando aprovação; **nenhuma implementação iniciada**.
+- **Track B — validação para produção (bloqueia o lançamento):** contatos, horários, autorização de imagens, dados legais e fatos privados, com os 13 critérios de `13_DISCOVERY_DOD.md` (0/13). Pacote para a Bruna preparado (`14`, `15`, `16`), sem previsão de uso.
 
-Nenhum código existe. Stack, design system, protótipo, frontend, backend, CMS, deploy e domínio continuam não iniciados e **bloqueados** até os critérios mínimos de Discovery.
+### O que a pesquisa pública estabeleceu (resumo; detalhes em `17`/`18`/`08`)
+- **OBSERVADO:** logo tem a flor no lugar do “o” de “doces”; cores medidas no PNG público ≈ #72482A (cacau), #FCECE4 (creme), #D4A484 (nude).
+- **OBSERVADO:** assinatura fotográfica = mão + produto em macro, luz natural, fundo claro; morango, copos de ninho/nutella, brownie, coxinhas; cardápio de ~20 categorias (doce **e** salgado).
+- **OBSERVADO:** WhatsApp público `wa.me/5535984235184`; Yooga `delivery.yooga.app/ateliedocesbruna`; horários **divergem** entre Google, Instagram e Yooga; “Menu de Bolos” exige login Google.
+- **Sem evidência pública:** data de fundação, história pessoal, prêmios confirmados, depoimentos autorizados. Um post de terceiro (@mestresdopaladar, 23/set/2026) narra uma trajetória e exibe um selo; **não é confirmação da Bruna**.
 
 ## 12. Próximo passo
 
-**Próxima ação externa:** entrevista com a Bruna (`14`) + coleta de materiais (`15`), com o briefing (`16`) enviado antes. **Bloqueio real:** coleta de informações e assets da Bruna. Só depois: 02 arquitetura da landing, 03 direção visual/moodboard, 04 concept visual, 05 protótipo, 06 implementação.
-
+**Aguardar aprovação do primeiro marco de Track A** (este relatório). Depois, com aprovação: baixar localmente (fora do Git) as fotos selecionadas para o protótipo; aprovar a stack; usar Impeccable (`shape` → `craft` → `animate` → `critique/audit` → `polish`) e UI/UX Pro Max; construir o concept em browser (1440×900, depois 390×844) com o loop ANALYZE → FIX → VERIFY. Em paralelo, e sem bloquear o protótipo: contato com a Bruna para o Track B quando possível.
 ## Relação com o DDAE
 
 O DDAE Engine (`Docs/00_…09_`) é a camada de governança: visão (`01_product`), arquitetura (`02_architecture`), decisões (`04_governance/registro_decisoes.md`), design system (`07_design_system`), sessões (`05_sessions`). Esses documentos **referenciam** este MASTER e não copiam seu conteúdo. Em caso de divergência, este arquivo prevalece sobre fatos de negócio/marca; o DDAE prevalece sobre processo e governança.

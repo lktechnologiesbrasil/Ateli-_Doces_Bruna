@@ -38,4 +38,4 @@ This project follows DDAE Engine: documents in `Docs/` are the source of truth. 
 ## Contexto do projeto
 
 - Leia primeiro `Docs/atelier-bruna/00_CONTEXT_MASTER.md` (fonte canônica de negócio/marca). Não invente fatos.
-- Fase atual: **01 — Discovery** (RD-03). Não iniciar código, stack ou design até `Docs/atelier-bruna/13_DISCOVERY_DOD.md` ser cumprido.
+- Fase atual: **Track A — protótipo público** (RD-04). Discovery com a Bruna vale só para o **lançamento** (Track B). Stack proposta (RD-08) aguarda aprovação; não instalar framework nem implementar antes da aprovação do marco.

@@ -1,0 +1,65 @@
+---
+// SCENE 10 — FECHAMENTO EMOCIONAL. Retoma o Hero: a fotografia (mesma
+// linguagem de mão + produto) esmaece sobre o cacau até restar só a marca.
+// Frases existentes da própria marca (bio do Instagram, assinatura do Yooga).
+import { Image } from 'astro:assets';
+import logo from '../assets/photos/logo.png';
+import photo from '../assets/photos/hero-a-morangos.jpg';
+---
+<section class="closing" data-scene="fechamento" aria-label="Fechamento">
+  <div class="closing__photo" aria-hidden="true">
+    <Image src={photo} alt="" widths={[900, 1440]} sizes="100vw" width={1440} loading="lazy" />
+  </div>
+  <div class="closing__content" data-reveal>
+    <Image class="closing__logo" src={logo} alt="Ateliê Doces Bruna" width={220} loading="lazy" />
+    <p class="closing__line">Doces incríveis para transformar o seu dia!</p>
+    <a class="btn btn-primary" href="https://delivery.yooga.app/ateliedocesbruna" target="_blank" rel="noopener">Pedir agora</a>
+    <span class="closing__signature">O seu momento mais doce!!</span>
+  </div>
+</section>
+
+<style>
+  .closing {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-inverse);
+    overflow: hidden;
+  }
+  .closing__photo { position: absolute; inset: 0; opacity: 0.55; }
+  .closing__photo :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .closing::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 65% at 50% 50%, var(--color-cacao) 55%, transparent 100%);
+  }
+  .closing__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    text-align: center;
+    color: var(--color-text-inverse);
+    padding: var(--space-lg);
+  }
+  .closing__logo { width: 220px; height: auto; }
+  .closing__line {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    max-width: 24ch;
+  }
+  .closing__signature {
+    font-size: var(--text-caption);
+    opacity: 0.75;
+    margin-top: var(--space-sm);
+  }
+
+  @media (max-width: 768px) {
+    .closing__logo { width: 150px; }
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/photos/logo.png';
+---
+<footer class="site-footer">
+  <Image src={logo} alt="Ateliê Doces Bruna" width={100} loading="lazy" />
+  <nav class="site-footer__links" aria-label="Links do rodapé">
+    <a href="https://www.instagram.com/ateliedocesbruna/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/5535984235184" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://delivery.yooga.app/ateliedocesbruna" target="_blank" rel="noopener">Pedido</a>
+    <a href="https://www.google.com/maps?cid=3062253418133205798" target="_blank" rel="noopener">Como chegar</a>
+    <a href="#privacidade" data-privacy-placeholder>Privacidade</a>
+  </nav>
+  <p class="site-footer__meta">
+    © 2026 Ateliê Doces Bruna · Protótipo local (Concept 01) — não representa o site em produção.
+  </p>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-bg-inverse);
+    color: var(--color-text-inverse);
+    padding: var(--space-lg) var(--container-gutter);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+  .site-footer :global(img) { opacity: 0.9; }
+  .site-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
+    font-size: var(--text-caption);
+  }
+  .site-footer__links a { text-decoration: none; opacity: 0.85; }
+  .site-footer__links a:hover { opacity: 1; text-decoration: underline; }
+  .site-footer__meta { font-size: var(--text-caption); color: var(--color-cream); max-width: 48ch; }
+</style>

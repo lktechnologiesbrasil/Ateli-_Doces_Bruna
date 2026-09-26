@@ -44,3 +44,7 @@ _..._
 ## 6. Decisões Pendentes
 
 _..._
+
+## Ateliê Doces Bruna — situação atual
+
+Público principal **ainda não confirmado** com a Bruna (`Docs/atelier-bruna/07_DISCOVERY_GAPS.md`, seção Negócio). Jornadas hipotéticas (compra imediata, encomenda, visita, descoberta): `Docs/atelier-bruna/00_CONTEXT_MASTER.md` §6.

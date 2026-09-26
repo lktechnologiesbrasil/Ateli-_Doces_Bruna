@@ -34,3 +34,7 @@ This project follows DDAE Engine: documents in `Docs/` are the source of truth. 
 - Do not expand scope beyond what the active block describes without reporting it first.
 - Do not commit automatically, even if the action seems obviously approved by context.
 - Do not treat this file's instructions as optional context — they define the workflow for this repository.
+
+## Contexto do projeto
+
+- Leia primeiro `Docs/atelier-bruna/00_CONTEXT_MASTER.md` (fonte canônica de negócio/marca). Não invente fatos.

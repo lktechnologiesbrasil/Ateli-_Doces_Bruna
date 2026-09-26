@@ -11,3 +11,8 @@ This project follows **DDAE Engine — Document-Driven AI Engineering Engine**. 
 - Register pendencies you find using the P1–P4 scale (`Docs/00_ddae_engine/metodologia.md`, section 12) in the block's feedback — don't leave them only in chat output.
 - Never run `git commit`, `git push`, or any destructive git command without explicit confirmation from the user for that specific action — a suggested commit message in a feedback/prompt file is not pre-approval.
 - Use `ddae-engine validate` / `ddae-engine audit` to sanity-check the `Docs/` structure after generating or editing session/block/prompt/feedback files.
+
+## Contexto do projeto
+
+- **Leia primeiro Docs/atelier-bruna/00_CONTEXT_MASTER.md** (fonte canônica de negócio/marca). Não invente fatos; separe CONFIRMADO / OBSERVADO / DIREÇÃO / A CONFIRMAR.
+- Fase 00: sem stack e sem código de landing page até decisão explícita.

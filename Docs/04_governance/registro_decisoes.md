@@ -35,3 +35,20 @@ Uma entrada por decisão, mais recente primeiro. Nunca edite uma decisão antiga
 ## 5. Decisões Pendentes
 
 _..._
+
+## Decisões registradas — Ateliê Doces Bruna
+
+### RD-01 — `00_CONTEXT_MASTER.md` é a fonte canônica de contexto de negócio/marca
+
+- **Data:** 2026-09-26
+- **Contexto:** o projeto tem contexto de marca/negócio extenso e o DDAE traz documentos de governança próprios; duas fontes concorrentes gerariam divergência.
+- **Decisão:** `Docs/atelier-bruna/00_CONTEXT_MASTER.md` é a fonte canônica de contexto do negócio e da marca. Os documentos DDAE (`01_product`, `02_architecture`, `04_governance`, `07_design_system`) cobrem governança/processo e **referenciam** o MASTER sem copiá-lo. Toda informação nova e relevante atualiza o MASTER primeiro.
+- **Alternativas consideradas:** duplicar o contexto dentro de `Docs/01_product`; usar apenas o DDAE.
+- **Consequências:** leitura obrigatória do MASTER por todo agente/sessão; fatos, observações, direção e lacunas rotulados; dados voláteis com data.
+- **Status:** Vigente
+
+### RD-02 — Fase 00 sem stack e sem código de frontend
+
+- **Data:** 2026-09-26
+- **Decisão:** nenhuma stack, framework, biblioteca visual ou código de landing page até as Fases 01–04 (discovery, arquitetura, direção visual, concept). O DDAE é instalado como `devDependency`.
+- **Status:** Vigente

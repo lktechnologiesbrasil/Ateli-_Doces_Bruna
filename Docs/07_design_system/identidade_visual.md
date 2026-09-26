@@ -55,3 +55,7 @@ _..._
 ## 8. Decisões Pendentes
 
 _..._
+
+## Ateliê Doces Bruna — ponteiro
+
+Identidade observada (logo tipográfica, paleta cacau/creme, serifada + sans, anti-padrões) está em `Docs/atelier-bruna/01_BRAND_IDENTITY.md`. **Valores oficiais (logo, hex, fontes) ainda a confirmar**; não definir tokens até a Fase 03. Nunca redesenhar a logo.

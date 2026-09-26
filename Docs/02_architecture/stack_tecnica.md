@@ -60,3 +60,7 @@ _..._
 ## 10. Decisões Pendentes
 
 _..._
+
+## Estado atual (Fase 00)
+
+**Stack não decidida.** Único pacote presente: `ddae-engine` (devDependency, ferramenta de governança — não é runtime do site). Ver RD-02 em `Docs/04_governance/registro_decisoes.md`. Contexto: `Docs/atelier-bruna/00_CONTEXT_MASTER.md`.

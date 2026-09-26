@@ -1,0 +1,115 @@
+---
+// SCENE 01 — HERO. Vencedor A/B/C decidido em Docs/05_sessions/.../08_feedbacks
+// (bloco 03): HERO-A (PUB-014, morangos do amor) — maior contraste vermelho x
+// cacau, melhor leitura em 1440x900 e 390x844, sem embalagem genérica no quadro.
+import { Image } from 'astro:assets';
+import logo from '../assets/photos/logo.png';
+import heroArt from '../assets/photos/hero-a-morangos.jpg';
+---
+<section id="hero" class="hero" data-scene="hero" aria-label="Abertura">
+  <div class="hero__art" data-hero-art>
+    <Image
+      src={heroArt}
+      alt="Mão segurando um morango coberto de calda vermelha brilhante, macro, sobre tapete de silicone cor de cobre"
+      widths={[640, 900, 1200, 1600]}
+      sizes="(max-width: 768px) 100vw, 58vw"
+      width={1600}
+      height={1900}
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+  <div class="hero__panel">
+    <Image class="hero__logo" src={logo} alt="Ateliê Doces Bruna" width={220} loading="eager" />
+    <h1 class="hero__title">
+      <span class="line">ATELIÊ</span>
+      <span class="line">DOCES</span>
+      <span class="line">BRUNA</span>
+    </h1>
+    <div class="hero__ctas">
+      <a class="btn btn-primary" href="https://delivery.yooga.app/ateliedocesbruna" target="_blank" rel="noopener">Pedir agora</a>
+      <a class="btn btn-secondary" href="#manifesto">Conhecer o Ateliê</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    background: var(--color-bg-inverse);
+    overflow: hidden;
+  }
+  .hero__art {
+    order: 2;
+    width: 58%;
+    min-height: 100svh;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    animation: hero-reveal var(--duration-reveal) var(--ease-editorial) both;
+    animation-delay: 0.1s;
+    /* Scroll-scale and pointer-tilt are both applied here via GSAP
+       (motion.ts) once JS runs — GSAP owns this element's transform
+       entirely so the two never fight over the CSS property. No base
+       `transform` here on purpose. */
+  }
+  .hero__art :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 60% 35%;
+    transform: scale(1.04);
+  }
+  @keyframes hero-reveal {
+    from { clip-path: inset(0 0 100% 0); }
+    to { clip-path: inset(0 0 0% 0); }
+  }
+  .hero__panel {
+    order: 1;
+    width: 42%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-lg);
+    padding: var(--space-2xl) var(--space-xl);
+    color: var(--color-text-inverse);
+  }
+  .hero__logo { width: 160px; height: auto; margin-bottom: var(--space-xs); }
+  .hero__title {
+    font-size: var(--text-hero);
+    line-height: var(--leading-tight);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .hero__title .line {
+    display: inline-block;
+    transform: translateY(110%);
+    animation: line-up var(--duration-reveal) var(--ease-editorial) both;
+  }
+  .hero__title .line:nth-child(1) { animation-delay: calc(var(--duration-stagger-step) * 3 + 0.2s); }
+  .hero__title .line:nth-child(2) { animation-delay: calc(var(--duration-stagger-step) * 4 + 0.2s); }
+  .hero__title .line:nth-child(3) { animation-delay: calc(var(--duration-stagger-step) * 5 + 0.2s); }
+  @keyframes line-up { to { transform: translateY(0); } }
+  .hero__ctas { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+  /* Cacau bg == default .btn-primary bg: invert here so the CTA doesn't vanish. */
+  .hero__ctas .btn-primary { background: var(--color-cream); color: var(--color-cacao); }
+  .hero__ctas .btn-primary:hover { background: #ffffff; }
+  .hero__ctas .btn-secondary { border-color: var(--color-text-inverse); }
+
+  @media (max-width: 768px) {
+    .hero { flex-direction: column; }
+    .hero__art { order: 1; width: 100%; min-height: 56svh; }
+    .hero__art :global(img) { object-position: center 22%; }
+    .hero__panel { order: 2; width: 100%; padding: var(--space-lg) var(--space-sm); gap: var(--space-md); min-height: 44svh; }
+    .hero__logo { width: 110px; }
+    .hero__title { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__art { animation: none; clip-path: none; transform: none !important; }
+    .hero__art :global(img) { transform: none; }
+    .hero__title .line { animation: none; transform: none; }
+  }
+</style>

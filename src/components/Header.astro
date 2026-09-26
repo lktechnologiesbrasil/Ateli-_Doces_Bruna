@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/photos/logo.png';
+---
+<header class="site-header" data-site-header>
+  <a class="brand" href="#hero">
+    <Image src={logo} alt="Ateliê Doces Bruna" width={120} loading="eager" />
+  </a>
+  <nav class="nav" aria-label="Seções da página">
+    <a href="#manifesto">O Ateliê</a>
+    <a href="#detalhe">Cuidado</a>
+    <a href="#criacoes">Criações</a>
+  </nav>
+  <a class="btn btn-primary cta-persistent" href="https://delivery.yooga.app/ateliedocesbruna" target="_blank" rel="noopener">
+    Pedir agora
+  </a>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: var(--z-header);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-2xs) var(--container-gutter);
+    background: transparent;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.4s var(--ease-editorial), transform 0.4s var(--ease-editorial), background-color 0.4s var(--ease-editorial);
+  }
+  .site-header.is-visible { opacity: 1; transform: none; background: color-mix(in srgb, var(--color-bg) 92%, transparent); }
+  .brand :global(img) { height: 40px; width: auto; }
+  .nav { display: flex; gap: var(--space-md); font-size: var(--text-caption); font-weight: 500; }
+  .nav a { text-decoration: none; }
+  .cta-persistent { padding: var(--space-3xs) var(--space-sm); min-height: 36px; font-size: var(--text-caption); }
+  @media (max-width: 768px) {
+    .nav { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-header { transition: none; }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  const heroSection = document.querySelector<HTMLElement>('[data-scene="hero"]');
+  if (header && heroSection && 'IntersectionObserver' in window) {
+    // A rootMargin-percentage trick here misfires whenever the hero's own
+    // height is close to (or shorter than) the viewport height: the shrunk
+    // observation band can stop overlapping the hero after only a small
+    // scroll, showing the header far too early. Checking the hero's own
+    // `boundingClientRect.top` disambiguates "scrolled past above" (show
+    // the header) from "hasn't been reached yet" (keep it hidden), and
+    // works regardless of how tall the hero is relative to the viewport.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const scrolledPast = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        header.classList.toggle('is-visible', scrolledPast);
+      },
+      { threshold: 0 }
+    );
+    observer.observe(heroSection);
+  } else if (header) {
+    header.classList.add('is-visible');
+  }
+</script>

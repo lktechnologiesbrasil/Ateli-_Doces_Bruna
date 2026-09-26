@@ -1,0 +1,84 @@
+---
+// SCENE 07 — GALERIA VIVA. Masonry via CSS columns (sem JS, sem grid 3x3),
+// proporções mistas, ordem "orgânica". Fundo passa de creme (Criações/
+// Ateliê já são cacau — aqui volta a creme) para cacau na transição para
+// Pedir/Encomendar.
+import { Image } from 'astro:assets';
+import morangoMacro from '../assets/photos/hero-a-morangos.jpg';
+import copoNutella from '../assets/photos/hero-b-copo-nutella.jpg';
+import caseirinho from '../assets/photos/hero-c-caseirinho.jpg';
+import brigadeiros from '../assets/photos/detalhe-brigadeiros.jpg';
+import copinhos from '../assets/photos/detalhe-copinhos.jpg';
+import morangoCravejado from '../assets/photos/galeria-morango.jpg';
+import geladinho from '../assets/photos/criacoes-geladinhos.jpg';
+
+const photos = [
+  { img: morangoMacro, alt: 'Morango do amor em macro, mão segurando', tall: true },
+  { img: copinhos, alt: 'Copinhos de banoffee em série' },
+  { img: caseirinho, alt: 'Caseirinho de chocolate coberto de granulado', tall: true },
+  { img: morangoCravejado, alt: 'Mulher de touca segura uma bandeja de morangos cravejados; a camiseta traz a marca' },
+  { img: copoNutella, alt: 'Copo de creme, brownie e Nutella em mão', tall: true },
+  { img: brigadeiros, alt: 'Bandeja com uma centena de brigadeiros belgas', tall: true },
+  { img: geladinho, alt: 'Sortimento com sorvete italiano e morango' },
+];
+---
+<section id="galeria" class="gallery" data-scene="galeria" aria-label="Galeria viva">
+  <h2 class="gallery__title" data-reveal>GALERIA VIVA</h2>
+  <div class="gallery__columns">
+    {photos.map((p, i) => (
+      <figure class:list={["gallery__item", p.tall && "gallery__item--tall"]} data-reveal data-reveal-group="gallery">
+        <Image src={p.img} alt={p.alt} widths={[320, 480, 640]} sizes="(max-width: 768px) 45vw, 22vw" width={640} loading="lazy" />
+      </figure>
+    ))}
+  </div>
+  <a class="gallery__cta" href="https://www.instagram.com/ateliedocesbruna/" target="_blank" rel="noopener">Ver mais no Instagram →</a>
+</section>
+
+<style>
+  .gallery {
+    background: var(--color-bg);
+    padding: var(--space-2xl) var(--container-gutter);
+  }
+  .gallery__title {
+    font-size: var(--text-h1);
+    margin-bottom: var(--space-lg);
+  }
+  .gallery__columns {
+    column-count: 3;
+    column-gap: var(--space-md);
+  }
+  .gallery__item {
+    margin: 0 0 var(--space-md);
+    break-inside: avoid;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .gallery__item :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s var(--ease-editorial);
+  }
+  .gallery__item:hover :global(img),
+  .gallery__item:focus-within :global(img) {
+    transform: scale(var(--scale-hover));
+  }
+  .gallery__item--tall { margin-top: var(--space-lg); }
+  .gallery__cta {
+    display: inline-block;
+    margin-top: var(--space-lg);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+
+  @media (max-width: 768px) {
+    .gallery { padding: var(--space-xl) var(--space-sm); }
+    .gallery__columns { column-count: 2; column-gap: var(--space-sm); }
+    .gallery__item--tall { margin-top: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery__item :global(img) { transition: none; }
+  }
+</style>

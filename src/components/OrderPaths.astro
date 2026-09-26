@@ -1,0 +1,92 @@
+---
+// SCENE 08 — PEDIR × ENCOMENDAR. Duas jornadas, duas superfícies visuais
+// distintas (não dois cards SaaS iguais): tratamento de cor/tipografia
+// diferente para cada lado, com fotografia real. URLs vêm das fontes
+// públicas já catalogadas (Docs/atelier-bruna/18_PUBLIC_CONTENT_INVENTORY.md).
+import { Image } from 'astro:assets';
+import prontaEntrega from '../assets/photos/hero-c-caseirinho.jpg';
+import encomenda from '../assets/photos/detalhe-brigadeiros.jpg';
+---
+<section id="pedir" class="order" data-scene="pedir" aria-label="Pedir ou encomendar">
+  <a class="order__path order__path--now" href="https://delivery.yooga.app/ateliedocesbruna" target="_blank" rel="noopener" data-reveal>
+    <div class="order__art">
+      <Image src={prontaEntrega} alt="Caseirinho de chocolate pronto para servir" widths={[560, 900]} sizes="(max-width: 768px) 100vw, 50vw" width={900} loading="lazy" />
+    </div>
+    <div class="order__copy">
+      <span class="order__eyebrow">Pronta entrega</span>
+      <h2>QUERO<br />AGORA</h2>
+      <span class="btn btn-primary">Pedir agora →</span>
+    </div>
+  </a>
+  <a class="order__path order__path--custom" href="https://wa.me/5535984235184" target="_blank" rel="noopener" data-reveal>
+    <div class="order__art">
+      <Image src={encomenda} alt="Bandeja com uma centena de brigadeiros belgas, feita para encomenda" widths={[560, 900]} sizes="(max-width: 768px) 100vw, 50vw" width={900} loading="lazy" />
+    </div>
+    <div class="order__copy">
+      <span class="order__eyebrow">Bolos, eventos, quantidade</span>
+      <h2>PARA UM<br />MOMENTO<br />ESPECIAL</h2>
+      <span class="btn btn-secondary">Fazer uma encomenda →</span>
+    </div>
+  </a>
+</section>
+
+<style>
+  .order {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100svh;
+  }
+  .order__path {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 100%;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    /* Base fallback behind the photo/gradient, so cream text never sits on
+       a literal cream background if the image is slow to paint (also
+       satisfies the detector: it can't see the photo, only computed
+       background-color). */
+    background: var(--color-cacao-deep);
+  }
+  .order__art { position: absolute; inset: 0; }
+  .order__art :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-editorial);
+  }
+  .order__path:hover .order__art :global(img),
+  .order__path:focus-visible .order__art :global(img) {
+    transform: scale(var(--scale-hover));
+  }
+  .order__path::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(79 48 25 / 0.92) 0%, rgb(79 48 25 / 0.7) 42%, rgb(79 48 25 / 0) 80%);
+  }
+  .order__copy {
+    position: relative;
+    z-index: 1;
+    padding: var(--space-xl) var(--space-lg);
+    color: var(--color-cream);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .order__eyebrow { font-size: var(--text-caption); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+  .order__copy h2 { font-size: var(--text-h1); line-height: var(--leading-tight); }
+  .order__path--now .btn-primary { background: var(--color-cream); color: var(--color-cacao); width: fit-content; }
+  .order__path--custom .btn-secondary { border-color: var(--color-cream); width: fit-content; }
+
+  @media (max-width: 768px) {
+    .order { grid-template-columns: 1fr; }
+    .order__path { min-height: 70svh; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .order__art :global(img) { transition: none; }
+  }
+</style>

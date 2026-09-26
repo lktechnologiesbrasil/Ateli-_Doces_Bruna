@@ -1,0 +1,60 @@
+---
+// SCENE 02 — MANIFESTO. Frase existente da marca (bio do Instagram, ver
+// Docs/atelier-bruna/17_INSTAGRAM_BRAND_ATLAS.md), não copy inventada.
+import { Image } from 'astro:assets';
+import photo from '../assets/photos/hero-b-copo-nutella.jpg';
+---
+<section id="manifesto" class="manifesto" data-scene="manifesto" aria-label="Manifesto">
+  <div class="manifesto__text">
+    <h2 class="manifesto__lines">
+      <span class="line" data-manifesto-line>DOCES INCRÍVEIS</span>
+      <span class="line" data-manifesto-line>PARA TRANSFORMAR</span>
+      <span class="line" data-manifesto-line>O SEU DIA.</span>
+    </h2>
+  </div>
+  <div class="manifesto__art" data-reveal>
+    <Image
+      src={photo}
+      alt="Copo transparente com camadas de creme, chocolate e brownie segurado por uma mão, fileira de copos desfocados ao fundo"
+      widths={[480, 720, 960]}
+      sizes="(max-width: 768px) 90vw, 36vw"
+      width={960}
+      height={1120}
+      loading="lazy"
+    />
+  </div>
+</section>
+
+<style>
+  .manifesto {
+    min-height: 150svh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    background: var(--color-bg-inverse);
+    color: var(--color-text-inverse);
+    padding: var(--space-2xl) var(--container-gutter);
+  }
+  .manifesto__text { flex: 1 1 55%; }
+  .manifesto__lines {
+    font-size: var(--text-hero);
+    line-height: var(--leading-tight);
+    display: flex;
+    flex-direction: column;
+  }
+  .manifesto__lines .line { display: inline-block; overflow: hidden; }
+  .manifesto__art {
+    flex: 0 1 32%;
+    max-width: 360px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .manifesto__art :global(img) { width: 100%; height: auto; }
+
+  @media (max-width: 768px) {
+    .manifesto { flex-direction: column; min-height: auto; padding: var(--space-xl) var(--space-sm); gap: var(--space-lg); }
+    .manifesto__lines { font-size: clamp(2.25rem, 9vw, 3rem); }
+    .manifesto__art { max-width: none; }
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+// SCENE 05 — NOSSAS CRIAÇÕES. Taxonomia real do cardápio (Yooga), sem preço.
+// Trilho horizontal + pin no desktop (ScrollTrigger, ≤3 cenas pinadas no
+// total do protótipo); fluxo vertical nativo no mobile (sem pin-scrub).
+import { Image } from 'astro:assets';
+import morangos from '../assets/photos/criacoes-morangos.jpg';
+import copos from '../assets/photos/criacoes-copos.jpg';
+import bolos from '../assets/photos/hero-c-caseirinho.jpg';
+import salgados from '../assets/photos/criacoes-salgados.jpg';
+import geladinhos from '../assets/photos/criacoes-geladinhos.jpg';
+import encomendas from '../assets/photos/detalhe-brigadeiros.jpg';
+
+const stops = [
+  { name: 'Morangos', desc: 'Morango do amor, cravejado, em copos e bombons.', img: morangos, alt: 'Morango cravejado em bandeja' },
+  { name: 'Copos & doses', desc: 'Camadas de creme, chocolate e fruta, prontas para levar.', img: copos, alt: 'Copo de creme com brownie e Nutella' },
+  { name: 'Bolos & fatias', desc: 'Fatias individuais e bolos inteiros, no ponto certo de doce.', img: bolos, alt: 'Caseirinho de chocolate coberto de granulado' },
+  { name: 'Salgados', desc: 'Coxinhas e outros salgados para qualquer hora do dia.', img: salgados, alt: 'Coxinha de costela recheada', crop: 'salgado' },
+  { name: 'Geladinhos & cones', desc: 'Para os dias mais quentes — geladinhos e cones trufados.', img: geladinhos, alt: 'Sortimento com sorvete italiano e morango' },
+  { name: 'Encomendas', desc: 'Quantidades sob medida, para festas e presentes.', img: encomendas, alt: 'Bandeja com uma centena de brigadeiros belgas' },
+];
+---
+<section id="criacoes" class="creations" data-scene="criacoes" data-creations-section aria-label="Nossas criações">
+  <h2 class="creations__title" data-reveal>NOSSAS CRIAÇÕES</h2>
+  <div class="creations__track" data-creations-track>
+    {stops.map((stop) => (
+      <article class="creation-stop" data-reveal data-reveal-group="creations">
+        <div class:list={["creation-stop__frame", stop.crop && `crop-${stop.crop}`]}>
+          {/* Sem `height`: Astro mantém a proporção original do arquivo (evita
+              um pré-recorte automático do serviço de imagem antes do nosso
+              object-fit/object-position decidir o enquadramento final). */}
+          <Image src={stop.img} alt={stop.alt} widths={[420, 640, 900]} sizes="(max-width: 768px) 90vw, 30vw" width={900} loading="lazy" />
+        </div>
+        <h3>{stop.name}</h3>
+        <p>{stop.desc}</p>
+        <a class="creation-stop__cta" href="https://delivery.yooga.app/ateliedocesbruna" target="_blank" rel="noopener">Ver no cardápio →</a>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .creations {
+    padding: var(--space-2xl) 0;
+    overflow: hidden;
+  }
+  .creations__title {
+    font-size: var(--text-h1);
+    padding-inline: var(--container-gutter);
+    margin-bottom: var(--space-lg);
+  }
+  /* Default: vertical stack (also the reduced-motion / no-JS fallback on
+     any viewport). Only `.is-horizontal` (added by motion.ts once GSAP's
+     pin+scrub is actually wired for >=1024px) switches to the horizontal
+     rail — never a bare @media query, so a pinned track can't ship without
+     a way to scroll it. */
+  .creations__track {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding-inline: var(--container-gutter);
+    align-items: stretch;
+  }
+  .creation-stop { width: 100%; flex: 0 0 auto; }
+
+  .creations__track.is-horizontal {
+    flex-direction: row;
+    width: max-content;
+    align-items: flex-start;
+  }
+  .creations__track.is-horizontal .creation-stop { width: min(80vw, 360px); }
+  .creation-stop__frame {
+    aspect-ratio: 6 / 7;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--space-sm);
+  }
+  .creation-stop__frame :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  /* PUB-013 (salgados) mostra uma lata de Coca-Cola e sachês de Heinz no
+     mesmo quadro — recorte forte no coxinha, no canto inferior direito da
+     foto original, para excluir as marcas de terceiro (ver TRACEABILITY.md). */
+  .crop-salgado :global(img) { object-position: 100% 100%; transform: scale(3.6); transform-origin: 100% 100%; }
+  .creation-stop h3 { font-size: var(--text-h2); margin-bottom: var(--space-3xs); }
+  .creation-stop p { font-size: var(--text-body); margin: 0 0 var(--space-2xs); }
+  .creation-stop__cta { font-size: var(--text-caption); font-weight: 500; text-decoration: none; border-bottom: 1px solid currentColor; }
+</style>

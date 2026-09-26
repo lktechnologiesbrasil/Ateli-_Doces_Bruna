@@ -1,0 +1,84 @@
+---
+// SCENE 03 — POR TRÁS DE CADA DETALHE. DIREÇÃO, não slogan confirmado
+// (Docs/atelier-bruna/20_SCROLL_STORYBOARD.md). Fotos reais: bandeja de 100
+// brigadeiros (encomenda), copinhos em série, e a foto de cuidado/produção
+// (PUB-010) recortada para evitar marcas de terceiro no enquadramento.
+import { Image } from 'astro:assets';
+import brigadeiros from '../assets/photos/detalhe-brigadeiros.jpg';
+import copinhos from '../assets/photos/detalhe-copinhos.jpg';
+import cuidado from '../assets/photos/detalhe-cuidado.jpg';
+---
+<section id="detalhe" class="detail" data-scene="detalhe" aria-label="Por trás de cada detalhe">
+  <div class="detail__grid">
+    <figure class="detail__photo detail__photo--tall" data-reveal>
+      <Image
+        src={cuidado}
+        alt="Mãos preparando doces no Ateliê, cercadas de ingredientes"
+        widths={[420, 640]}
+        sizes="(max-width: 768px) 60vw, 22vw"
+        width={640}
+        height={853}
+        loading="lazy"
+      />
+    </figure>
+    <figure class="detail__photo detail__photo--wide" data-reveal>
+      <Image
+        src={brigadeiros}
+        alt="Bandeja com uma centena de brigadeiros belgas, segurada por uma mão"
+        widths={[560, 840]}
+        sizes="(max-width: 768px) 90vw, 34vw"
+        width={840}
+        height={905}
+        loading="lazy"
+      />
+      <figcaption class="visually-hidden">Encomenda de 100 unidades — feito à mão, uma a uma.</figcaption>
+    </figure>
+    <figure class="detail__photo detail__photo--tall" data-reveal>
+      <Image
+        src={copinhos}
+        alt="Copinhos de banoffee organizados em série, mão ao centro"
+        widths={[420, 640]}
+        sizes="(max-width: 768px) 60vw, 22vw"
+        width={640}
+        height={640}
+        loading="lazy"
+      />
+    </figure>
+  </div>
+  <div class="detail__text" data-reveal>
+    <h2>POR TRÁS DE CADA DETALHE.</h2>
+    <p>Cada doce sai da mesma cozinha, na mesma escala artesanal — uma unidade de cada vez, feita à mão.</p>
+  </div>
+</section>
+
+<style>
+  .detail {
+    padding: var(--space-2xl) var(--container-gutter);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+  .detail__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    align-items: end;
+    gap: var(--space-md);
+  }
+  .detail__photo { margin: 0; border-radius: var(--radius-md); overflow: hidden; }
+  .detail__photo--tall :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  /* PUB-010 mostra caixas de Nutella/Ferrero ao redor — recorte forte para
+     isolar o rosto/touca e excluir marcas de terceiro do quadro (ver
+     TRACEABILITY.md e bloco 03). */
+  .detail__photo--tall:first-child :global(img) { object-position: 32% 2%; transform: scale(2.6); transform-origin: 32% 2%; }
+  .detail__photo--wide { transform: translateY(-6%); }
+  .detail__photo--wide :global(img) { width: 100%; height: auto; }
+  .detail__text { max-width: 46ch; }
+  .detail__text h2 { font-size: var(--text-h1); line-height: var(--leading-tight); margin-bottom: var(--space-sm); }
+  .detail__text p { font-size: var(--text-body-lg); }
+
+  @media (max-width: 768px) {
+    .detail { padding: var(--space-xl) var(--space-sm); gap: var(--space-lg); }
+    .detail__grid { grid-template-columns: 1fr 1fr; }
+    .detail__photo--wide { grid-column: 1 / -1; transform: none; order: -1; }
+  }
+</style>

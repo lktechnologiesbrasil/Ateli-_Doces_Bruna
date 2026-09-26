@@ -1,0 +1,59 @@
+---
+// SCENE 04 — O PRODUTO OCUPA A TELA. HERO-C (PUB-017, caseirinho de
+// chocolate) — melhor resolução para zoom (4096x4096), reservado para esta
+// cena e não para o hero (ver justificativa do bloco 03: embalagem branca
+// genérica reduz assinatura como abertura, mas funciona bem em close-up).
+import { Image } from 'astro:assets';
+import photo from '../assets/photos/hero-c-caseirinho.jpg';
+---
+<section class="product" data-scene="produto" data-product-stage aria-label="Produto em destaque">
+  <div class="product__frame" data-product-image>
+    <Image
+      src={photo}
+      alt="Caseirinho de chocolate coberto de granulado, em close-up"
+      widths={[900, 1280, 1800]}
+      sizes="100vw"
+      width={1800}
+      height={1800}
+      loading="lazy"
+    />
+  </div>
+  <div class="product__scrim" aria-hidden="true"></div>
+  <p class="product__word" data-reveal>Feito para ser lembrado.</p>
+</section>
+
+<style>
+  .product {
+    position: relative;
+    min-height: 100svh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-cacao-deep);
+  }
+  .product__frame { position: absolute; inset: 0; will-change: transform; }
+  .product__frame :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+  /* Scrim (not just text-shadow) so the headline holds WCAG AA contrast
+     regardless of what part of the photo sits behind it (Impeccable
+     detector flagged text-shadow-only contrast as unreliable here). */
+  .product__scrim {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(20, 10, 4, 0.65) 0%, rgba(20, 10, 4, 0.4) 45%, rgba(20, 10, 4, 0) 75%);
+  }
+  .product__word {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-display);
+    font-size: var(--text-h1);
+    color: var(--color-text-inverse);
+    padding: var(--space-sm) var(--space-md);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .product { min-height: 80svh; }
+    .product__word { font-size: clamp(2rem, 8vw, 2.75rem); }
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+// Continuação provisória minimalista — indica os próximos capítulos sem
+// implementá-los ainda (loja, pedir/encomendar, contato, footer final:
+// fora de escopo do Concept 01, ver Docs/atelier-bruna/20_SCROLL_STORYBOARD.md).
+import { Image } from 'astro:assets';
+import logo from '../assets/photos/logo.png';
+---
+<section class="coming-next" data-reveal aria-label="Próximos capítulos">
+  <Image src={logo} alt="Ateliê Doces Bruna" width={140} loading="lazy" />
+  <p>O Ateliê · Pedir e encomendar · Como chegar</p>
+  <span class="coming-next__note">Concept 01 — protótipo local, em construção.</span>
+</section>
+
+<style>
+  .coming-next {
+    min-height: 60svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    background: var(--color-bg-inverse);
+    color: var(--color-text-inverse);
+    text-align: center;
+    padding: var(--space-xl) var(--space-sm);
+  }
+  .coming-next p { font-size: var(--text-body-lg); }
+  .coming-next__note { font-size: var(--text-caption); opacity: 0.7; }
+</style>

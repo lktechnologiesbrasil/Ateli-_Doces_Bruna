@@ -61,9 +61,17 @@ _..._
 
 _..._
 
-## Estado atual (Fase 00)
+## Estado atual (Concept 01, 2026-09-26)
 
-**Stack não decidida.** Único pacote presente: `ddae-engine` (devDependency, ferramenta de governança — não é runtime do site). Ver RD-02 em `Docs/04_governance/registro_decisoes.md`. Contexto: `Docs/atelier-bruna/00_CONTEXT_MASTER.md`.
+**Stack aprovada e instalada** (ver aprovação do dono do projeto em 2026-09-26 e `Docs/04_governance/registro_decisoes.md`). Versões efetivamente fixadas em `package-lock.json`:
+
+| Pacote | Versão instalada | Papel |
+|---|---|---|
+| `astro` | `7.3.5` | Framework estático, pipeline de imagem, roteamento de página única |
+| `gsap` | `3.15.0` | ScrollTrigger, timelines, motion da narrativa |
+| `ddae-engine` | `0.3.0` | Governança de documentação (devDependency, não é runtime) |
+
+Confirmado no npm registry em 2026-09-26 (`npm view astro version`, `npm view gsap version`) antes da instalação — não assumido dos números da pesquisa anterior; coincidiu com o que já estava documentado. Node em uso: `v24.15.0` (≥ 22.12 exigido pelo Astro). Sem React, sem Next.js, sem Lenis instalados.
 ---
 
 ## Recomendação de stack (2026-09-26) — PROPOSTA, aguardando aprovação (RD-08)

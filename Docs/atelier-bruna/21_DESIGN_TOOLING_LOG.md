@@ -10,6 +10,12 @@
 - **Limitação:** **Python 3 não está instalado** (só o atalho da Microsoft Store). Os scripts de busca (`scripts/search.py`, `design_system.py`) **não rodaram**. Consultei os CSVs de `data/` diretamente.
 - **Consultas feitas (CSV):** `products.csv` (Bakery/Cafe), `typography.csv`, `motion.csv`, `ux-guidelines.csv`.
 
+## 1.b Concept 01 (2026-09-26) — stack e Impeccable ativados
+
+- **Astro 7.3.5 + GSAP 3.15.0** instalados na raiz do projeto (scaffold via `create-astro@5.2.4 --template minimal` em diretório temporário, depois copiado — o diretório do projeto não estava vazio). Versões reconfirmadas no npm registry no momento da instalação (idênticas às já pesquisadas). `package.json` tinha um BOM UTF-8 herdado do `ddae-engine init`, removido para o `astro build` funcionar.
+- **Impeccable engine ativado.** `scripts/impeccable engine-probe` baixou o binário `impeccable-windows-x64.exe` (versão `0.1.6`, casando com `.claude/skills/impeccable/VERSION`) de `https://github.com/pbakaus/impeccable/releases/download/engine-v0.1.6/impeccable-windows-x64.exe`, verificado contra o sidecar `.sha256` pelo próprio launcher antes de instalar em `~/.impeccable/bin/0.1.6/`. Hash do binário obtido localmente: `sha256:9f7e10589ff001d50bc6c3573d525e8b176f1ec051f6bcd1c6b13822d8bfc777`. `impeccable context` confirmado operacional (leu `PRODUCT.md`).
+- **Hook do Claude Code ativado como project-local.** `impeccable hooks on` escreveu `.claude/settings.local.json` (gitignorado, específico desta máquina) com `PostToolUse` (detector imediato em Edit/Write de arquivos de UI) e `Stop` (varredura completa). Config do detector em `.impeccable/config.json`/`config.local.json`, também gitignorados. Nenhuma configuração compartilhada (`settings.json`) foi tocada.
+
 ## 2. Impeccable — instalada por caminho alternativo
 - **Fonte:** `https://github.com/pbakaus/impeccable` (skill: Apache-2.0).
 - **Tentativas do método oficial:** `npx impeccable@4.1.0 install --providers=claude --scope=project` e `npx impeccable@latest install …` → **falharam duas vezes**: “Download failed: Could not verify skill bundle: HTTP 404. Nothing was installed” (o próprio erro aponta o issue upstream #479). Nada foi gravado.

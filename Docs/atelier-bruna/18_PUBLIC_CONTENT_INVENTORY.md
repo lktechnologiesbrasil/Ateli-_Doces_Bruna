@@ -58,5 +58,5 @@
 ## Resumo
 - **Itens catalogados:** 7 (canais) + 24 (feed IG) + 6 (fotos Yooga, mais ~35 não vistas) = 37 entradas.
 - **Vistos visualmente:** ~12 miniaturas de feed + avatar + 6 destaques + ~10 fotos Yooga + logo PNG.
-- **Baixados para o repositório:** 0.
-- **Lacunas:** 27 fotos do Google (loja/interior) não abertas; feed anterior a 12/ago/2026 inacessível sem login; “Menu de Bolos” inacessível.
+- **Baixados (2026-09-26, Concept 01):** 11 arquivos — PUB-001 (logo), PUB-010, PUB-013, PUB-014, PUB-016, PUB-017, PUB-018, PUB-019, PUB-023, PUB-024, PUB-026 — em resolução original, para `references/_public-cache/` (fora do Git). Rastreabilidade completa em `references/_public-cache/TRACEABILITY.md`. Usados no Concept 01 (`Docs/05_sessions/session_01_concept_01_experience_foundation/`).
+- **Lacunas:** 27 fotos do Google (loja/interior) não abertas; feed anterior a 12/ago/2026 inacessível sem login; “Menu de Bolos” inacessível; nenhuma foto própria da marca para “Geladinhos & cones” (usado substituto: sortimento com sorvete italiano, PUB-023).

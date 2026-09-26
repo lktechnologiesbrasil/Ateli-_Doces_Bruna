@@ -61,6 +61,13 @@ const stops = [
     align-items: stretch;
   }
   .creation-stop { width: 100%; flex: 0 0 auto; }
+  @media (min-width: 1024px) {
+    .creations__track:not(.is-horizontal) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl) var(--space-lg);
+    }
+  }
 
   .creations__track.is-horizontal {
     flex-direction: row;

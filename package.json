@@ -1,0 +1,9 @@
+﻿{
+  "name": "atelie-doces-bruna",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Ateliê Doces Bruna — landing page/site institucional (Fase 00: fundação + contexto)",
+  "devDependencies": {
+    "ddae-engine": "^0.3.0"
+  }
+}

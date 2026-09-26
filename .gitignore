@@ -1,4 +1,4 @@
-﻿node_modules/
+node_modules/
 .ddae/
 .env
 .env.*
@@ -6,3 +6,8 @@
 .DS_Store
 Thumbs.db
 references/_public-cache/
+src/assets/photos/
+dist/
+.astro/
+.claude/settings.local.json
+.impeccable/

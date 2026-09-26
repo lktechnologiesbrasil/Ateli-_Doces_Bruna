@@ -1,0 +1,83 @@
+/* Design tokens — Ateliê Doces Bruna (Concept 01)
+   Fonte da verdade: Docs/07_design_system/tokens_design.md
+   Cores medidas no PNG público da logo (ver Docs/atelier-bruna/17_INSTAGRAM_BRAND_ATLAS.md). */
+
+:root {
+  /* Cor — paleta observada da marca */
+  --color-cacao: #72482a;
+  --color-cacao-deep: #4f3019;
+  --color-cream: #fcece4;
+  --color-nude: #d4a484;
+  --color-strawberry: #b3261e; /* acento de FOTOGRAFIA apenas — nunca cor de UI */
+
+  --color-bg: var(--color-cream);
+  --color-bg-inverse: var(--color-cacao);
+  --color-text: var(--color-cacao);
+  --color-text-inverse: var(--color-cream);
+  --color-border: var(--color-nude);
+
+  /* Tipografia — Cormorant Garamond (display/headline) + Work Sans (corpo/UI).
+     Decisão registrada em Docs/07_design_system/tokens_design.md e 21_DESIGN_TOOLING_LOG.md. */
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'Work Sans', system-ui, sans-serif;
+
+  --text-hero: clamp(3rem, 4vw + 2rem, 7.5rem);
+  --text-h1: clamp(2.5rem, 3vw + 1.5rem, 4.5rem);
+  --text-h2: clamp(1.75rem, 1.5vw + 1.25rem, 2.75rem);
+  --text-body-lg: clamp(1.125rem, 0.5vw + 1rem, 1.375rem);
+  --text-body: 1rem;
+  --text-caption: 0.8125rem;
+
+  --leading-tight: 1.05;
+  --leading-snug: 1.25;
+  --leading-normal: 1.55;
+
+  /* Espaçamento — escala base 8px */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 9rem;
+
+  /* Container / viewport */
+  --container-max: 90rem; /* 1440px */
+  --container-gutter: clamp(1.25rem, 4vw, 4rem);
+
+  /* Breakpoints (referência para @media; CSS não lê custom properties em media queries) */
+  --breakpoint-mobile: 390px;
+  --breakpoint-desktop: 1440px;
+
+  /* Raio — a marca não usa cantos arredondados marcantes; só o essencial para toque */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-pill: 999px;
+
+  /* z-index */
+  --z-base: 0;
+  --z-header: 10;
+  --z-overlay: 20;
+  --z-dev-tools: 999; /* reservado para o seletor DEV do Hero A/B/C, removido antes da entrega final */
+
+  /* Motion tokens — linguagem única do projeto (ver Docs/atelier-bruna/20_SCROLL_STORYBOARD.md) */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1); /* saída suave, sem bounce/elastic */
+  --ease-linear: linear;
+  --duration-reveal: 0.6s;
+  --duration-stagger-step: 0.06s;
+  --distance-reveal: 24px;
+  --scale-hover: 1.03;
+  --scale-hero-scroll: 1.06;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-reveal: 0.001s;
+    --duration-stagger-step: 0s;
+    --distance-reveal: 0px;
+    --scale-hover: 1;
+    --scale-hero-scroll: 1;
+  }
+}

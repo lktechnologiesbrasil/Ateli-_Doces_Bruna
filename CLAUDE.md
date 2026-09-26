@@ -16,3 +16,4 @@ This project follows **DDAE Engine — Document-Driven AI Engineering Engine**. 
 
 - **Leia primeiro Docs/atelier-bruna/00_CONTEXT_MASTER.md** (fonte canônica de negócio/marca). Não invente fatos; separe CONFIRMADO / OBSERVADO / DIREÇÃO / A CONFIRMAR.
 - Fase 00: sem stack e sem código de landing page até decisão explícita.
+- Fase atual: **01 — Discovery** (RD-03). Não iniciar código, stack ou design até Docs/atelier-bruna/13_DISCOVERY_DOD.md ser cumprido.

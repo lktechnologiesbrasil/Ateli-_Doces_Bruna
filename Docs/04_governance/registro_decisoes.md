@@ -52,3 +52,11 @@ _..._
 - **Data:** 2026-09-26
 - **Decisão:** nenhuma stack, framework, biblioteca visual ou código de landing page até as Fases 01–04 (discovery, arquitetura, direção visual, concept). O DDAE é instalado como `devDependency`.
 - **Status:** Vigente
+### RD-03 — Fase 00 concluída; Fase 01 (Discovery) iniciada; implementação bloqueada
+
+- **Data:** 2026-09-26
+- **Contexto:** a fundação (Git, DDAE, contexto) foi enviada a `origin/main` (`c150756`, `aa8f082`). O próximo trabalho é coletar informação e assets reais com a Bruna.
+- **Decisão:** Discovery é o trabalho atual. **Nenhum código, stack, design system ou protótipo** até os critérios de `Docs/atelier-bruna/13_DISCOVERY_DOD.md` estarem cumpridos (gaps P0 confirmados com evidência) ou o dono do projeto registrar exceção aqui.
+- **Referências:** `Docs/atelier-bruna/07_DISCOVERY_GAPS.md`, `09_DISCOVERY_INTERVIEW.md`, `10_ASSET_REQUEST.md`, `11_ASSET_INVENTORY.md`, `12_CONTENT_MATRIX.md`.
+- **Consequências:** requisitos funcionais (`Docs/01_product/requisitos_funcionais.md`) só serão escritos após o Discovery.
+- **Status:** Vigente

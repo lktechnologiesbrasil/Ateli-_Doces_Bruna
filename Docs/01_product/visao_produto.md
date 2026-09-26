@@ -59,3 +59,6 @@ _..._
 - **Objetivos (verificáveis, a detalhar na Fase 02):** apresentar marca/Bruna/loja; encaminhar Pedir agora → Yooga e Encomendar → WhatsApp; SEO local; base para Analytics e conversões.
 - **Fora da visão:** substituir Yooga/WhatsApp/Instagram; catálogo com preços; inventar história, números ou avaliações.
 - **Pendências:** ver `Docs/atelier-bruna/07_DISCOVERY_GAPS.md`.
+### Status do projeto
+
+Fase 00 concluída (2026-09-26). **Fase 01 — Discovery e inventário de assets em andamento**; nenhum código iniciado; implementação bloqueada (RD-03). Detalhes: `Docs/atelier-bruna/00_CONTEXT_MASTER.md` §11.

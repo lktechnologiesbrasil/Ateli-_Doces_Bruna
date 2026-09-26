@@ -67,11 +67,21 @@ Instagram, Linktree, Yooga, perfil público do Google/Maps — observados em **s
 
 ## 11. Estado atual
 
-**FASE 00 — Fundação do projeto + DDAE + Contexto/Discovery inicial.** Ainda não iniciados: stack, design system, protótipo, frontend, backend, CMS, deploy, domínio. Nenhum código da landing page existe.
+**FASE 00 — concluída** (fundação, DDAE, contexto inicial; commits `c150756` e `aa8f082` em `origin/main`).
+
+**FASE 01 — Discovery e inventário de assets: iniciada em 2026-09-26.** Objetivo: preparar a conversa estruturada com a Bruna e a coleta de materiais reais. Documentos criados:
+- `07_DISCOVERY_GAPS.md` — 71 gaps priorizados (P0–P3) e categorizados; nenhum confirmado.
+- `09_DISCOVERY_INTERVIEW.md` — roteiro de entrevista (79 perguntas).
+- `10_ASSET_REQUEST.md` — pedido de materiais por prioridade.
+- `11_ASSET_INVENTORY.md` — inventário vivo; nenhum asset recebido.
+- `12_CONTENT_MATRIX.md` — conteúdo necessário por seção.
+- `13_DISCOVERY_DOD.md` — critérios de encerramento (0/13 cumpridos).
+
+Nenhum código existe. Stack, design system, protótipo, frontend, backend, CMS, deploy e domínio continuam não iniciados e **bloqueados** até os critérios mínimos de Discovery.
 
 ## 12. Próximo passo
 
-**FASE 01 — Discovery estruturado + inventário de assets** (entrevista com a Bruna e coleta de material). Depois: 02 arquitetura da landing, 03 direção visual/moodboard, 04 concept visual, 05 protótipo, 06 implementação.
+**Bloqueio real:** coleta de informações e assets da Bruna (entrevista + materiais). Só depois: 02 arquitetura da landing, 03 direção visual/moodboard, 04 concept visual, 05 protótipo, 06 implementação.
 
 ## Relação com o DDAE
 

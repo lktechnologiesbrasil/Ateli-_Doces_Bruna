@@ -17,6 +17,11 @@ Documentação de **contexto do negócio e da marca** do projeto da landing page
 | [`06_CONTENT_AND_ASSETS.md`](./06_CONTENT_AND_ASSETS.md) | Fotografia, inventário de assets necessários. |
 | [`07_DISCOVERY_GAPS.md`](./07_DISCOVERY_GAPS.md) | Checklist do que falta confirmar com a Bruna. |
 | [`08_SOURCES_AND_EVIDENCE.md`](./08_SOURCES_AND_EVIDENCE.md) | Fontes e evidências, com data de observação. |
+| [`09_DISCOVERY_INTERVIEW.md`](./09_DISCOVERY_INTERVIEW.md) | Roteiro de entrevista com a Bruna. |
+| [`10_ASSET_REQUEST.md`](./10_ASSET_REQUEST.md) | Materiais a solicitar, por prioridade. |
+| [`11_ASSET_INVENTORY.md`](./11_ASSET_INVENTORY.md) | Inventário vivo de assets. |
+| [`12_CONTENT_MATRIX.md`](./12_CONTENT_MATRIX.md) | Conteúdo necessário por seção. |
+| [`13_DISCOVERY_DOD.md`](./13_DISCOVERY_DOD.md) | Critérios de encerramento do Discovery. |
 
 ## Regras
 

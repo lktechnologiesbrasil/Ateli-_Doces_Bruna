@@ -76,12 +76,13 @@ Instagram, Linktree, Yooga, perfil público do Google/Maps — observados em **s
 - `11_ASSET_INVENTORY.md` — inventário vivo; nenhum asset recebido.
 - `12_CONTENT_MATRIX.md` — conteúdo necessário por seção.
 - `13_DISCOVERY_DOD.md` — critérios de encerramento (0/13 cumpridos).
+- **Pacote client-facing preparado:** `14_DISCOVERY_FIELD_GUIDE.md` (25 perguntas principais; as 79 do `09` viram follow-ups), `15_CLIENT_ASSET_CHECKLIST.md` (lista para enviar à Bruna) e `16_DISCOVERY_ONE_PAGER.md` (briefing de uma página). Nenhuma resposta ou material recebido: tudo `PENDENTE DE DISCOVERY`.
 
 Nenhum código existe. Stack, design system, protótipo, frontend, backend, CMS, deploy e domínio continuam não iniciados e **bloqueados** até os critérios mínimos de Discovery.
 
 ## 12. Próximo passo
 
-**Bloqueio real:** coleta de informações e assets da Bruna (entrevista + materiais). Só depois: 02 arquitetura da landing, 03 direção visual/moodboard, 04 concept visual, 05 protótipo, 06 implementação.
+**Próxima ação externa:** entrevista com a Bruna (`14`) + coleta de materiais (`15`), com o briefing (`16`) enviado antes. **Bloqueio real:** coleta de informações e assets da Bruna. Só depois: 02 arquitetura da landing, 03 direção visual/moodboard, 04 concept visual, 05 protótipo, 06 implementação.
 
 ## Relação com o DDAE
 

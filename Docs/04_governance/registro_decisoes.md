@@ -59,4 +59,4 @@ _..._
 - **Decisão:** Discovery é o trabalho atual. **Nenhum código, stack, design system ou protótipo** até os critérios de `Docs/atelier-bruna/13_DISCOVERY_DOD.md` estarem cumpridos (gaps P0 confirmados com evidência) ou o dono do projeto registrar exceção aqui.
 - **Referências:** `Docs/atelier-bruna/07_DISCOVERY_GAPS.md`, `09_DISCOVERY_INTERVIEW.md`, `10_ASSET_REQUEST.md`, `11_ASSET_INVENTORY.md`, `12_CONTENT_MATRIX.md`.
 - **Consequências:** requisitos funcionais (`Docs/01_product/requisitos_funcionais.md`) só serão escritos após o Discovery.
-- **Status:** Vigente
+- **Status:** Vigente- **Atualização 2026-09-26:** pacote client-facing preparado (`14`, `15`, `16`). Próxima ação externa: entrevista + coleta de materiais. Fase 01 **não** concluída; segue o DoD.

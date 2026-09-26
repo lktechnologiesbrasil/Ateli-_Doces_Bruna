@@ -22,6 +22,9 @@ Documentação de **contexto do negócio e da marca** do projeto da landing page
 | [`11_ASSET_INVENTORY.md`](./11_ASSET_INVENTORY.md) | Inventário vivo de assets. |
 | [`12_CONTENT_MATRIX.md`](./12_CONTENT_MATRIX.md) | Conteúdo necessário por seção. |
 | [`13_DISCOVERY_DOD.md`](./13_DISCOVERY_DOD.md) | Critérios de encerramento do Discovery. |
+| [`14_DISCOVERY_FIELD_GUIDE.md`](./14_DISCOVERY_FIELD_GUIDE.md) | Guia de campo: entrevista essencial (25 perguntas). Client-facing (uso do condutor). |
+| [`15_CLIENT_ASSET_CHECKLIST.md`](./15_CLIENT_ASSET_CHECKLIST.md) | Lista de materiais em linguagem simples, para enviar à Bruna. |
+| [`16_DISCOVERY_ONE_PAGER.md`](./16_DISCOVERY_ONE_PAGER.md) | Briefing de uma página para a Bruna. |
 
 ## Regras
 

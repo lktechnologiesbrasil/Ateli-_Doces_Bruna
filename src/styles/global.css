@@ -1,7 +1,21 @@
 @import './tokens.css';
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: auto; }
+/* `clip`, not `hidden`: overflow:hidden establishes a new containing block
+   for `position: fixed`/`absolute` descendants (the Header), which can pull
+   them out of true viewport-fixed positioning. `overflow-x: clip` still
+   kills the horizontal scrollbar from full-bleed sections without creating
+   that containing block (Impeccable detect, clipped-overflow-container).
+   Support: Chrome 90+, Firefox 97+, Safari 16+ — acceptable for this
+   Track A prototype; revisit if Track B needs older-browser coverage. */
+html {
+  scroll-behavior: auto;
+  overflow-x: clip;
+  /* Keeps anchor-jump targets and keyboard focus clear of the fixed header
+     instead of landing partly underneath it (UI/UX Pro Max ux-guidelines
+     #100, WCAG 2.2 AA Focus Not Obscured). */
+  scroll-padding-top: var(--header-height);
+}
 @media (prefers-reduced-motion: no-preference) {
   html:focus-within { scroll-behavior: smooth; }
 }
@@ -13,7 +27,6 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-body);
   line-height: var(--leading-normal);
-  overflow-x: hidden;
 }
 
 img { max-width: 100%; display: block; }

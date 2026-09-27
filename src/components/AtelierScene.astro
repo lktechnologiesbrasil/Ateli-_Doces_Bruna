@@ -58,7 +58,9 @@ import ambiente from '../assets/photos/loja-ambiente.jpg';
   .atelier {
     background: var(--color-bg-inverse);
     color: var(--color-text-inverse);
-    padding: 0 var(--container-gutter) var(--space-2xl);
+    /* padding-top was 0: the photo grid sat flush against the section's own
+       top edge with no inset (Impeccable detect, cramped-padding). */
+    padding: var(--space-lg) var(--container-gutter) var(--space-2xl);
   }
   .atelier__grid {
     display: grid;

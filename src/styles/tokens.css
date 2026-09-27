@@ -46,6 +46,7 @@
   /* Container / viewport */
   --container-max: 90rem; /* 1440px */
   --container-gutter: clamp(1.25rem, 4vw, 4rem);
+  --header-height: 56px; /* measured .site-header height; keeps anchor jumps and keyboard focus clear of the fixed header (WCAG 2.2 AA 2.4.11 Focus Not Obscured) */
 
   /* Breakpoints (referência para @media; CSS não lê custom properties em media queries) */
   --breakpoint-mobile: 390px;

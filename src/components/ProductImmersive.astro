@@ -5,6 +5,11 @@
 // genérica reduz assinatura como abertura, mas funciona bem em close-up).
 import { Image } from 'astro:assets';
 import photo from '../assets/photos/hero-c-caseirinho.jpg';
+
+// Frase da própria marca (legenda real de PUB-017, IG/p/DdSN0XJxESb/,
+// 14/set/2026): "Nossos caseirinhos individuais são perfeitos para matar
+// aquela vontade de um bolinho caseiro, fresquinho e feito com carinho." —
+// substitui um slogan que não vinha de nenhuma fonte (Concept 01C, copy audit).
 ---
 <section class="product" data-scene="produto" data-product-stage aria-label="Produto em destaque">
   <div class="product__frame" data-product-image>
@@ -19,7 +24,7 @@ import photo from '../assets/photos/hero-c-caseirinho.jpg';
     />
   </div>
   <div class="product__scrim" aria-hidden="true"></div>
-  <p class="product__word" data-reveal>Feito para ser lembrado.</p>
+  <p class="product__word" data-reveal>Fresquinho, feito com carinho.</p>
 </section>
 
 <style>
@@ -40,7 +45,7 @@ import photo from '../assets/photos/hero-c-caseirinho.jpg';
   .product__scrim {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, rgba(20, 10, 4, 0.65) 0%, rgba(20, 10, 4, 0.4) 45%, rgba(20, 10, 4, 0) 75%);
+    background: radial-gradient(ellipse at center, rgb(79 48 25 / 0.72) 0%, rgb(79 48 25 / 0.45) 45%, rgb(79 48 25 / 0) 75%);
   }
   .product__word {
     position: relative;

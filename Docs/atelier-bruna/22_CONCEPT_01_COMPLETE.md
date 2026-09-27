@@ -110,3 +110,122 @@ npm run build
 
 - Branch: `feat/public-brand-experience`. Sem merge, sem PR, sem deploy.
 - Ver commits em `13. seção final` da entrega desta sessão.
+
+---
+
+## Concept 01C — Final Brand Polish
+
+> Marco de polimento final, sem redesenho, sem novas cenas, sem aumentar a complexidade de motion. Foco: tirar os últimos sinais de "template" das Scenes 01–10.
+
+### Auditoria do estado real do Impeccable (antes de qualquer mudança)
+
+Havia contradição entre relatórios anteriores. Investigado a fundo antes de fazer qualquer coisa:
+
+```
+IMPECCABLE_ENGINE: INSTALLED
+HOOK: ACTIVE
+VERSION: 4.0.0 (binário) / skill v4.4.0 / launcher VERSION 0.1.6
+SOURCE: baixado pelo instalador oficial (npx impeccable install) em sessão anterior deste mesmo projeto
+HASH (SHA-256): 9f7e10589ff001d50bc6c3573d525e8b176f1ec051f6bcd1c6b13822d8bfc777
+  (arquivo: C:\Users\LARos\.impeccable\bin\0.1.6\impeccable.exe, 16.729.488 bytes)
+```
+
+O relatório do Concept 01B que disse "o binário do motor ainda não foi baixado" **estava errado** — um engano deste agente, não um estado real do projeto. O binário, o hash, o hook (`.claude/settings.local.json`, consentimento aceito em `.impeccable/config.local.json`) e o cache de sessões anteriores (`.impeccable/hook.cache.json`) já existiam. Confirmado rodando `impeccable.exe --version` → `4.0.0` e `--help`, que lista os comandos reais: `detect`, `ignores`, `install`, `link`, `update`, `check`.
+
+### Comandos executados
+
+A CLI instalada (v4.0.0) não expõe subcomandos chamados literalmente `critique`/`audit`/`polish` — esses são **prompts da skill** (`.claude/skills/impeccable/reference/{critique,audit,polish}.md`), não comandos de binário. O equivalente real e executável é `detect`, rodado contra a página completa 01→10:
+
+```
+impeccable detect --viewport 1440x900 http://<server>/       (Puppeteer, render completo)
+impeccable detect --viewport 390x844  http://<server>/       (idem, mobile)
+impeccable detect dist/index.html                            (análise estática do HTML/CSS compilado)
+impeccable detect src/                                        (análise estática do código-fonte)
+```
+
+Rodado no início do marco (baseline) e de novo depois de cada rodada de correção, sobre o build final.
+
+### Achados — classificados
+
+| # | Achado | Modo | Classificação | Ação |
+|---|---|---|---|---|
+| 1 | `cramped-padding` — grade da Scene 06 encostada no topo da seção, sem respiro (`padding-top: 0`) | estático (`dist/index.html`) | ACCEPT | `padding-top` adicionado (`var(--space-lg)`); confirmado visualmente por screenshot. O detector estático continua reportando o mesmo achado após a correção — limite conhecido de resolução de custom properties através do CSS com hash do Astro; a evidência visual prevalece. |
+| 2 | `clipped-overflow-container` — `html` com `overflow-x` não-visível envolvendo o Header `position: fixed` | estático (`dist/index.html`) | ACCEPT (parcial) | `overflow-x: hidden` (que muda o containing block de elementos fixed em alguns WebKit) trocado por `overflow-x: clip` (não muda o containing block) + `scroll-padding-top` adicionado. O aviso residual é esperado: a regra trata `hidden` e `clip` como equivalentes, e um cabeçalho fixo sempre estará "dentro" de qualquer guarda contra rolagem horizontal do documento — não há como satisfazer a regra sem reintroduzir risco real de rolagem horizontal. |
+| 3 | `kicker-above-heading` — rótulo "Ateliê Doces Bruna" acima do H2 "ITAPEVA/MINAS GERAIS" na Scene 09 | ao vivo (Puppeteer, 1440x900 e 390x844) | ACCEPT | Removido. A marca já está estabelecida pelo logo no Header e repetida no Closing; o rótulo era decoração redundante, exatamente o padrão que a regra descreve. |
+| 4 | `low-contrast` — texto do mesmo rótulo, 1,9:1 pixel / 5,2-5,4:1 mediana | ao vivo | ACCEPT (via #3) | Resolvido ao remover o elemento. |
+| 5 | `body-text-viewport-edge` — parágrafo de fechamento da Scene 05 ("E também salgados...") "encostado" nas bordas (390px) | ao vivo (mobile) | REJECT — FALSE POSITIVE | Medido via `getComputedStyle`: `padding-left/right: 20px`, `box-sizing: border-box`. Confirmado visualmente por screenshot: o texto tem respiro real dos dois lados. O detector está medindo a caixa externa (que preenche 100% da largura porque `max-width: 48ch` é maior que o viewport de 390px), não a posição do glifo. |
+
+### UI/UX Pro Max — uso real
+
+Sem Python instalado (decisão deliberada de não instalar só por conveniência); os CSVs de `data/` foram consultados diretamente:
+
+| Regra consultada | Nº | Achado no projeto | Ação |
+|---|---|---|---|
+| Heading Hierarchy | 39 | Um único h1 (Hero), h2 por seção, h3 só dentro do h2 de Criações — sequencial, sem saltos | Verificado, sem ação |
+| Focus Not Obscured (Minimum) | 100 | Sem `scroll-padding-top`: um salto de âncora podia levar o topo da seção para debaixo do Header fixo | Corrigido — `scroll-padding-top: var(--header-height)` (56px, medido) adicionado a `html` |
+| Focus Appearance | 102 | `:focus-visible { outline: 2px solid var(--color-cacao); outline-offset: 3px }` | Já conforme, sem ação |
+| Alt Text | 38 | Imagens de conteúdo com `alt` descritivo; a foto de fundo decorativa do Closing usa `alt=""` + `aria-hidden` (correto para decorativa) | Verificado, sem ação |
+| Touch Target Size / Spacing | 22, 23 | Botões ≥ 48px de altura (`.btn { min-height: 48px }`); links do rodapé com `gap: 24px` | Verificado, sem ação |
+| landing.csv (Hero + Features + CTA) | — | "Disable hero parallax under reduced motion and render its static final state" | Já implementado (`motion.ts`: `if (prefersReducedMotion) return`) |
+
+### A. Scene 09 — Visite o Ateliê
+
+**Antes:** bloco de texto centralizado sobre fundo creme liso, sem nenhuma foto, sem marca visível — a seção mais genérica da experiência.
+
+**Tentativa descartada:** foto full-bleed de fundo (a mesma PUB-026) com véu escuro atrás do texto. QA visual real em 1440x900 e 390x844 mostrou que a única foto pública disponível (mão + copos ocupando a maior parte do quadro) não tem uma área neutra grande o bastante para o texto não cair sobre o adesivo/produto, mesmo com o véu mais forte testado. Rejeitada por evidência visual, não por preferência.
+
+**Solução final:** o mesmo padrão de composição já aprovado na Scene 06 (foto emoldurada + texto ao lado, sobre `--color-cacao-deep`) — não uma técnica nova. Terceiro recorte inédito da mesma foto pública (vitrine + balcão, canto inferior esquerdo do quadro original), que ainda não tinha aparecido em nenhuma outra cena. Texto reduzido a "ITAPEVA / MINAS GERAIS" + "Como chegar →" (o rótulo redundante "Ateliê Doces Bruna" foi removido — achado #3 do Impeccable). Sem horário, sem endereço completo, sem mapa embutido.
+
+### B. Criações — categorias com foto fraca
+
+**Antes:** 6 categorias, sendo que "Salgados" dependia de um recorte forçado (`scale(3.6)`) para excluir uma lata de Coca-Cola do quadro, e "Geladinhos & cones" usava uma foto substituta (sortimento de sorvete italiano) que não é realmente da categoria.
+
+**Decisão:** reduzido a 4 categorias com fotografia forte e autêntica (Morangos, Copos & doses, Bolos & fatias, Encomendas). As duas removidas não desaparecem: uma linha editorial no fechamento da seção ("E também salgados, geladinhos, cones e muito mais no cardápio completo.") as nomeia explicitamente, sem fingir ter fotografia que não existe.
+
+### C. "Ver no cardápio" repetido
+
+**Antes:** CTA "Ver no cardápio →" repetido em cada um dos 6 cards.
+
+**Depois:** removido de cada card. Um único CTA editorial no fechamento da seção — "Conhecer o cardápio completo →" (mesmo destino, Yooga) — substitui os 6 CTAs repetidos por 1.
+
+### Scene 08 — Pedir × Encomendar
+
+Já forte; não redesenhada. Reverificada visualmente: em qualquer leitura rápida, "PRONTA ENTREGA / QUERO AGORA / Pedir agora" (esquerda) contra "BOLOS, EVENTOS, QUANTIDADE / PARA UM MOMENTO ESPECIAL / Fazer uma encomenda" (direita) — rótulos diferentes, tratamento de botão diferente (preenchido x contornado), fotografia diferente (produto pronto x caixa em quantidade). A diferença entre as duas jornadas não depende de leitura atenta.
+
+### Copy audit
+
+Encontrada uma linha de slogan inventado, sem derivação de fonte real: "Feito para ser lembrado." (Scene 04, Produto imersivo). Substituída por uma frase extraída da legenda real do próprio post (PUB-017, IG/p/DdSN0XJxESb/, 14/set/2026: "...fresquinho e feito com carinho"): agora o texto da cena é "Fresquinho, feito com carinho." O restante do copy já derivava de fontes reais (bio do Instagram, legendas específicas de cada foto) e foi mantido.
+
+### Motion QA (ON e reduced-motion)
+
+**Limitação de ambiente, documentada com transparência:** o ambiente desta sessão roda com `prefers-reduced-motion: reduce` ativo no nível do sistema — não é algo que este agente controla ou pode desligar para testar o caminho "motion ON" visualmente. Confirmado por rede: nenhuma requisição a `gsap`/`ScrollTrigger` ocorre nesta sessão em nenhum momento. A cobertura real desta rodada:
+
+- **Reduced motion, 1440x900 e 390x844:** confirmado ao vivo. Todas as marcações `[data-reveal]` aparecem imediatamente; nenhum `pin-spacer` no DOM; conteúdo completo e legível sem qualquer animação, incluindo a entrada da Scene 06, a Galeria, Pedir/Encomendar, Visite e o Fechamento.
+- **Scroll reverso, resize, refresh no meio da página:** testado sob reduced-motion — sem artefato, sem CLS perceptível, sem perda de estado (o Header aparece/desaparece corretamente ao cruzar o limite do Hero em qualquer direção).
+- **Motion ON (pin/scrub em Produto e Criações, tilt do Hero):** não verificado visualmente nesta sessão, por essa mesma limitação de ambiente. A cobertura vem da leitura do código (`src/scripts/motion.ts`): os `ScrollTrigger` de Produto (pin, `end: '+=120%'`) e Criações (pin, `matchMedia('(min-width: 1024px)')`) e o tilt do Hero (`matchMedia('(hover: hover) and (pointer: fine)')`) são carregados dinamicamente apenas quando `prefersReducedMotion` é falso, cada um com seu próprio guarda de `matchMedia`/breakpoint. Recomendação: validar visualmente em uma máquina/navegador sem essa preferência de acessibilidade ativada antes de aprovar definitivamente o motion.
+
+### Infraestrutura de QA (achado operacional, não de design)
+
+No meio do QA desta rodada, a porta padrão do Astro (4321) estava ocupada por um processo `astro dev` de outra sessão de chat neste mesmo projeto (confirmado por `CommandLine`/`CreationDate` do processo antes de qualquer ação — nada foi encerrado sem essa verificação). Isso causava screenshots trocados/em branco de forma intermitente. Resolvido subindo um servidor de preview dedicado desta sessão em uma porta própria (`--port 4877`, verificada livre antes de usar) via `.claude/launch.json` + `preview_start`, sem tocar no processo da outra sessão. `.claude/launch.json` ganhou uma segunda configuração (`atelie-doces-bruna-preview`) para isso.
+
+### Performance — antes/depois
+
+| Métrica | Concept 01B (baseline) | Concept 01C (final) | Variação |
+|---|---|---|---|
+| `dist/` total | ~2,7 MB | 2,5 MB | -0,2 MB (menos categorias em Criações, Scene 09 sem a variante 1920px de fundo) |
+| JS base (reveals) | 8 KB | 8 KB | = |
+| GSAP core | 72 KB | 72 KB | = |
+| ScrollTrigger | 44 KB | 44 KB | = |
+| CSS | 20 KB | 24 KB | +4 KB (estilos de Visit/Criações/Produto ajustados) |
+| Maior imagem isolada | 127,5 KB | 130,6 KB | +3 KB (mesma família de variantes do hero) |
+| Nº de imagens .webp no build | 59 | 54 | -5 (categorias e variante de fundo removidas) |
+
+Nenhuma regressão relevante; o total do build ficou menor, não maior.
+
+### Arquivos alterados nesta rodada
+
+`src/components/Visit.astro` (reescrito duas vezes: tentativa full-bleed descartada, depois versão final em cartão), `src/components/Creations.astro` (4 categorias, CTA único), `src/components/ProductImmersive.astro` (copy trocada, cor do véu para token), `src/components/AtelierScene.astro` (padding-top), `src/styles/global.css` (`overflow-x: clip`, `scroll-padding-top`), `src/styles/tokens.css` (`--header-height`), `.claude/launch.json` (servidor de preview dedicado).
+
+### Bugs encontrados nesta rodada
+
+Ver tabela de achados do Impeccable acima (#1-#5) — todos vieram da ferramenta, não de inspeção manual. Nenhum bug novo de motion, de link ou de dado foi encontrado além desses.

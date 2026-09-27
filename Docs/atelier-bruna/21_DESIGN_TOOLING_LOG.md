@@ -21,8 +21,16 @@
 - **Tentativas do método oficial:** `npx impeccable@4.1.0 install --providers=claude --scope=project` e `npx impeccable@latest install …` → **falharam duas vezes**: “Download failed: Could not verify skill bundle: HTTP 404. Nothing was installed” (o próprio erro aponta o issue upstream #479). Nada foi gravado.
 - **Alternativa (documentada no README, “vendored”):** copiei o **build oficial compilado para Claude** do clone local do repositório (commit `9d715cc`, 2026-09-24) para `.claude/skills/impeccable/` (skill **v4.4.0**; launcher/engine `VERSION` 0.1.6).
 - **Não instalado de propósito:** `.claude/settings.json` do repositório do Impeccable (**hooks** que rodam comando a cada edição/Stop) e os 4 agentes `impeccable-*` (já existem no ambiente). Hooks são opt-in: pedir aprovação.
-- **Pendente:** o launcher (`scripts/impeccable context|hook|…`) baixa **um binário do engine** para `~/.impeccable/bin/` na primeira execução (verificação SHA-256). **Ainda não rodou**; precisa do seu OK (download de arquivo externo).
-- **Uso até agora:** li as referências `init.md` e `shape.md`. Como o launcher não rodou, segui o caminho previsto pela skill (“Launcher unavailable”): ler o contexto direto. Escrevi `PRODUCT.md` na raiz no formato do `init`, contendo **apenas fatos que você confirmou** e decisões abertas marcadas. **Substituição divulgada:** o `init` prevê entrevistar o usuário (AskUserQuestion); usei o seu briefing escrito como resposta e não abri rodada de perguntas.
+- **Correção (Concept 01C, 2026-09-26):** o parágrafo abaixo, escrito no Concept 01A, dizia que o binário do engine "ainda não rodou" e pedia autorização para baixá-lo. **Isso estava errado.** Auditoria real nesta rodada (não presumida — arquivos inspecionados um a um) encontrou o binário já baixado, com hook ativo e consentimento já registrado:
+  ```
+  IMPECCABLE_ENGINE: INSTALLED — C:\Users\LARos\.impeccable\bin\0.1.6\impeccable.exe (16.729.488 bytes)
+  HOOK: ACTIVE — .claude/settings.local.json (PostToolUse Edit|Write + Stop)
+  VERSION: 4.0.0 (binário) / skill v4.4.0 / launcher VERSION 0.1.6
+  HASH (SHA-256): 9f7e10589ff001d50bc6c3573d525e8b176f1ec051f6bcd1c6b13822d8bfc777
+  CONSENT: .impeccable/config.local.json → {"hook":{"consent":"accepted"}}
+  ```
+  A partir do Concept 01C, o comando real é `impeccable detect [file|dir|url]` (confirmado via `--help`); `critique`/`audit`/`polish` são prompts da skill, não subcomandos do binário. Achados e uso real: `22_CONCEPT_01_COMPLETE.md`, seção "Concept 01C — Final Brand Polish".
+- **Uso no Concept 01A/B (histórico):** li as referências `init.md` e `shape.md`. Como o launcher não tinha rodado *até aquele ponto*, segui o caminho previsto pela skill (“Launcher unavailable”): ler o contexto direto. Escrevi `PRODUCT.md` na raiz no formato do `init`, contendo **apenas fatos que você confirmou** e decisões abertas marcadas. **Substituição divulgada:** o `init` prevê entrevistar o usuário (AskUserQuestion); usei o seu briefing escrito como resposta e não abri rodada de perguntas.
 - **Comandos reais disponíveis** (README v4.4): `/impeccable init`, `shape`, `craft`, `animate`, `critique`, `audit`, `polish`, `document`, `extract`, `typeset`, `layout`, `colorize`, `adapt`, `harden`, `optimize`, `overdrive`, `live`, `generate`, entre outros. Fluxo planejado: `init` (feito manualmente) → `shape` (brief em `20` e `PRODUCT.md`; falta sua confirmação) → `craft` → `animate` → `critique`/`audit` → `polish`.
 - **Registro:** projeto tratado como **marca/landing page (brand)**, não como dashboard/produto.
 

@@ -2,36 +2,77 @@
 // SCENE 09 — VISITE O ATELIÊ. Horário e endereço completo divergem entre
 // fontes públicas (Google, Instagram, Yooga — ver Docs/atelier-bruna/
 // 08_SOURCES_AND_EVIDENCE.md) e o endereço segue marcado PARCIAL em
-// 12_CONTENT_MATRIX.md: por decisão explícita do dono do projeto,
-// nenhum horário ou endereço completo é exibido como fato definitivo
-// nesta fase. Só a cidade (convergente entre todas as fontes) e um CTA
-// de busca no Google Maps pelo nome da marca (sem coordenada fixada).
+// 12_CONTENT_MATRIX.md: por decisão explícita do dono do projeto, nenhum
+// horário ou endereço completo é exibido como fato definitivo nesta fase.
+//
+// Concept 01C: esta cena era a mais genérica da experiência (texto
+// centralizado, sem foto, sem marca visível). Uma primeira tentativa usou a
+// foto como fundo full-bleed com véu escuro — descartada após QA visual real
+// em 1440x900 e em mobile: o único material disponível (mão + copos em
+// primeiro plano) não tem uma área "vazia" grande o suficiente para o texto
+// não cair sobre o adesivo/produto, mesmo com um véu forte. Reconstruída
+// como um cartão de foto ao lado do texto — o MESMO padrão de composição já
+// aprovado na Scene 06 (AtelierScene), não uma técnica nova — usando um
+// terceiro recorte inédito da mesma foto pública (PUB-026): a vitrine
+// refrigerada com o balcão, canto inferior esquerdo do quadro original, que
+// ainda não aparecia em nenhuma outra cena.
+import { Image } from 'astro:assets';
+import ambiente from '../assets/photos/loja-ambiente.jpg';
+
 const mapsUrl = 'https://www.google.com/maps?cid=3062253418133205798'; // CID da ficha pública do Google (extraído da URL da própria ficha, set/2026)
 ---
 <section id="visite" class="visit" data-scene="visite" aria-label="Visite o Ateliê">
-  <h2 class="visit__place" data-reveal>ITAPEVA<br /><span>MINAS GERAIS</span></h2>
-  <p class="visit__note" data-reveal>
-    Confira os horários atualizados no Google Maps ou no WhatsApp antes de visitar.
-  </p>
-  <a class="btn btn-primary" href={mapsUrl} target="_blank" rel="noopener" data-reveal>Como chegar →</a>
+  <div class="visit__grid">
+    <figure class="visit__photo" data-reveal>
+      <Image
+        src={ambiente}
+        alt="Vitrine e balcão do Ateliê, com prateleiras e plantas ao fundo"
+        widths={[560, 900, 1280]}
+        sizes="(max-width: 768px) 92vw, 46vw"
+        width={1280}
+        loading="lazy"
+      />
+    </figure>
+    <div class="visit__text" data-reveal>
+      <h2 class="visit__place">ITAPEVA<br /><span>MINAS GERAIS</span></h2>
+      <a class="btn btn-primary" href={mapsUrl} target="_blank" rel="noopener">Como chegar →</a>
+    </div>
+  </div>
 </section>
 
 <style>
   .visit {
-    background: var(--color-bg);
-    color: var(--color-text);
-    min-height: 70svh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: var(--space-sm);
-    padding: var(--space-2xl) var(--space-sm);
+    background: var(--color-cacao-deep);
+    color: var(--color-text-inverse);
+    padding: var(--space-2xl) var(--container-gutter);
   }
+  .visit__grid {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+  .visit__photo {
+    margin: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+  }
+  .visit__photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Vitrine + balcão refrigerado, canto inferior esquerdo do quadro
+       original — recorte ainda não usado em nenhuma outra cena. */
+    object-position: 4% 88%;
+  }
+  .visit__text { text-align: left; }
   .visit__place {
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(2.75rem, 5vw, 4.5rem);
     line-height: var(--leading-tight);
+    margin: 0 0 var(--space-md);
   }
   .visit__place span {
     display: block;
@@ -40,6 +81,14 @@ const mapsUrl = 'https://www.google.com/maps?cid=3062253418133205798'; // CID da
     font-size: var(--text-body);
     font-weight: 500;
     letter-spacing: 0.32em;
+    color: var(--color-nude);
   }
-  .visit__note { max-width: 40ch; font-size: var(--text-body); opacity: 0.85; margin-bottom: var(--space-sm); }
+
+  @media (max-width: 768px) {
+    .visit { padding: var(--space-xl) var(--space-sm); }
+    .visit__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+    .visit__photo { aspect-ratio: 4 / 3; }
+    .visit__text { text-align: center; }
+    .visit__place { margin-inline: auto; }
+  }
 </style>
